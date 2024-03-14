@@ -22,7 +22,6 @@ const allData = [
     {type: "acidic", substance: `CH${toSub("3")}NH${toSub("3")}${toSup("+")}`},
 
     {type: "basic", substance: `OH${toSup("-")}`},
-    {type: "basic", substance: `SH${toSup("-")}`},
     {type: "basic", substance: `NH${toSub("3")}`},
     {type: "basic", substance: `CH${toSub("3")}COO${toSup("-")}`},
     {type: "basic", substance: `HCOO${toSup("-")}`},
@@ -44,19 +43,20 @@ const allData = [
     {type: "amphiprotic", substance: `HPO${toSub("4")}${toSup("-2")}`},
     {type: "amphiprotic", substance: `H${toSub("2")}AsO${toSub("4")}${toSup("-")}`},
     {type: "amphiprotic", substance: `HAsO${toSub("4")}${toSup("-2")}`},
+    {type: "amphiprotic", substance: `SH${toSup("-")}`},
     
 
 ]
 
 const questData = [
-    {question: "Бренстед-Лоури қышқылдарды анықтаңыз", type:"acidic"},
-    {question: `H${toSup("+")} иондарын бере алатын затты анықтаңыз`, type:"acidic"},
-    {question: `H${toSup("+")} доноры болатын затты анықтаңыз`, type:"acidic"},
-    {question: `Протон доноры болатын затты анықтаңыз`, type:"acidic"},
-    {question: "Бренстед-Лоури негіздерін анықтаңыз", type:"basic"},
-    {question: `H${toSup("+")} иондарын қабылдай алатын затты анықтаңыз`, type:"basic"},
-    {question: `H${toSup("+")} акцепторы болатын затты анықтаңыз`, type:"basic"},
-    {question: `Протон акцепторы болатын затты анықтаңыз`, type:"basic"},
+    {question: "Бренстед-Лоури қышқылдарды(амфолит емес) анықтаңыз", type:"acidic"},
+    {question: `H${toSup("+")} иондарын бере алатын(амфолит емес) затты анықтаңыз`, type:"acidic"},
+    {question: `H${toSup("+")} доноры(амфолит емес) болатын затты анықтаңыз`, type:"acidic"},
+    {question: `Протон доноры(амфолит емес) болатын затты анықтаңыз`, type:"acidic"},
+    {question: "Бренстед-Лоури негіздерін(амфолит емес) анықтаңыз", type:"basic"},
+    {question: `H${toSup("+")} иондарын қабылдай алатын(амфолит емес) затты анықтаңыз`, type:"basic"},
+    {question: `H${toSup("+")} акцепторы(амфолит емес) болатын затты анықтаңыз`, type:"basic"},
+    {question: `Протон акцепторы(амфолит емес) болатын затты анықтаңыз`, type:"basic"},
     {question: `Протон акцепторы және доноры да бола алатын затты анықтаңыз`, type:"amphiprotic"}, 
     {question: `Амфолитті анықтаңыз`, type:"amphiprotic"},
     {question: `Кейде Бренстед-Лоури қышқылы кейде Бренстед-Лоури негізі бола алатын затты табыңыз`, type:"amphiprotic"},
@@ -136,7 +136,7 @@ function App() {
         e.preventDefault();
         const allSelected = document.querySelectorAll('.selected');
         const allUnSelected = document.querySelectorAll('span.variant:not(.selected)');
-        if ( ( checkClass(allSelected, "amphiprotic") || checkClass(allSelected, questionType)) && (!checkOneElemClass(allUnSelected, questionType))) {
+        if ( ( checkClass(allSelected, questionType)) && ((!checkOneElemClass(allUnSelected, questionType)))) {
             variantsContainer.innerHTML = "";
             questionContainer.innerHTML = "";
             if (container.lastChild.tagName == `BUTTON`) {
